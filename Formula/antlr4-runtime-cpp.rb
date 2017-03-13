@@ -9,6 +9,12 @@ class Antlr4RuntimeCpp < Formula
 
   patch :DATA
 
+  bottle do
+    cellar :any
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "92c76f45fd4cd46d53fe0f53281ef7e60c44d42c7faac2a3fbcc6b27abf83b96" => :sierra
+  end
+
   def install
     cd "./runtime/Cpp"
     system "cmake", ".", *std_cmake_args
