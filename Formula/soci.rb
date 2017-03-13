@@ -1,6 +1,6 @@
 class Soci < Formula
   desc "The C++ Database Access Library"
-  homepage "http://soci.sourceforge.net"
+  homepage "https://soci.sourceforge.io/"
   head "https://github.com/SOCI/soci.git",
     :revision => "e719c44bb89949d3c179a6390de57ccd9046878b"
 
@@ -19,7 +19,7 @@ class Soci < Formula
     inreplace "./src/core/CMakeLists.txt", "DESTINATION cmake", "DESTINATION ${LIBDIR}/cmake/soci"
     inreplace "./cmake/SociBackend.cmake", "DESTINATION cmake", "DESTINATION ${LIBDIR}/cmake/soci"
 
-    args = %W[
+    args = %w[
       -DSOCI_TESTS=OFF
       -DSQLITE3_INCLUDE_DIR=/usr/local/opt/sqlite3/include
       -DSQLITE3_LIBRARIES=/usr/local/opt/sqlite3/lib/libsqlite3.dylib
@@ -34,5 +34,18 @@ class Soci < Formula
     system "cmake", ".", *std_cmake_args, *args
     system "make"
     system "make", "install"
+
+    mv "#{lib}/cmake/soci/SOCI.cmake", "#{lib}/cmake/soci/SOCIConfig.cmake"
+  end
+
+  test do
+    (testpath/"test.cpp").write <<-EOS.undent
+      #include <soci.h>
+      int main() {
+        return 0;
+      }
+    EOS
+    system ENV.cc, "test.cpp", "-L#{lib}", "-lsoci", "-o", "test"
+    system "./test"
   end
 end
