@@ -6,6 +6,12 @@ class Qtwebkit < Formula
   sha256 "553dfb47a10d256314b74105d0eafadab0efc0ebd32d77a09cffbe2fed09def8"
   head "https://github.com/annulen/webkit.git"
 
+  bottle do
+    cellar :any
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "fec628b377eaf4875e9829ff59aea142ff779e616180b8e6c8428b4c9f24f25a" => :sierra
+  end
+
   keg_only "Same as Qt 5"
 
   depends_on "cmake" => :build
