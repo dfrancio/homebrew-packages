@@ -20,7 +20,11 @@ class Qtwebkit < Formula
   depends_on "fontconfig" => :recommended
 
   def install
-    system "cmake", ".", *std_cmake_args, "-DPORT=Qt"
+    args = std_cmake_args + %w[
+      -DCMAKE_PREFIX_PATH=#{HOMEBREW_PREFIX}
+      -DPORT=Qt
+    ]
+    system "cmake", ".", *args
     system "make"
     system "make", "install"
   end
