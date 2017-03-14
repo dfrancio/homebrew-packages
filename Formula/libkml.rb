@@ -42,8 +42,6 @@ class Libkml < Formula
   end
 
   test do
-    system "make", "check"
-
     (testpath/"test.cpp").write <<-EOS.undent
       #include <libkml.h>
       int main() {
