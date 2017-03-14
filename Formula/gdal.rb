@@ -34,6 +34,10 @@ class Gdal < Formula
 
   def install
     cd "gdal"
+    inreplace "frmts/jpeg2000/jpeg2000_vsil_io.cpp",
+       "stream->bufbase_ = JAS_CAST(uchar *, buf);",
+       "stream->bufbase_ = JAS_CAST(u_char *, buf);"
+
     system "./configure", "--prefix=#{HOMEBREW_PREFIX}",
                           "--disable-dependency-tracking",
                           "--with-armadillo=yes",
