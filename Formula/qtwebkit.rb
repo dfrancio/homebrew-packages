@@ -1,13 +1,10 @@
 class Qtwebkit < Formula
   desc "Open Source Web Browser Engine - Qt"
   homepage "https://webkit.org"
+  url "https://github.com/annulen/webkit/releases/download/qtwebkit-tp5/qtwebkit-tp5.tar.xz"
+  version "5.602.3"
+  sha256 "553dfb47a10d256314b74105d0eafadab0efc0ebd32d77a09cffbe2fed09def8"
   head "https://github.com/annulen/webkit.git"
-
-  devel do
-    url "https://github.com/annulen/webkit/releases/download/qtwebkit-tp5/qtwebkit-tp5.tar.xz"
-    version "5.602.3"
-    sha256 "553dfb47a10d256314b74105d0eafadab0efc0ebd32d77a09cffbe2fed09def8"
-  end
 
   keg_only "Same as Qt 5"
 
