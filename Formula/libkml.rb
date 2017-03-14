@@ -40,15 +40,4 @@ class Libkml < Formula
       libkml
     EOS
   end
-
-  test do
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <libkml.h>
-      int main() {
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-llibkml", "-o", "test"
-    system "./test"
-  end
 end

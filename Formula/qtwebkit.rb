@@ -31,34 +31,4 @@ class Qtwebkit < Formula
     system "make"
     system "make", "install"
   end
-
-  test do
-    (testpath/"hello.pro").write <<-EOS.undent
-      QT       += core qtwebkit qtwebkitwidgets
-      QT       -= gui
-      TARGET    = hello
-      CONFIG   += console
-      CONFIG   -= app_bundle
-      TEMPLATE  = app
-      SOURCES  += main.cpp
-    EOS
-
-    (testpath/"main.cpp").write <<-EOS.undent
-      #include <QCoreApplication>
-      #include <QDebug>
-      #include <QWebKit>
-      int main(int argc, char *argv[])
-      {
-        QCoreApplication a(argc, argv);
-        qDebug() << "Hello World!";
-        return 0;
-      }
-    EOS
-
-    system bin/"qmake", testpath/"hello.pro"
-    system "make"
-    assert File.exist?("hello")
-    assert File.exist?("main.o")
-    system "./hello"
-  end
 end

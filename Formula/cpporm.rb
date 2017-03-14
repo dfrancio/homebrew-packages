@@ -26,15 +26,4 @@ class Cpporm < Formula
     system "make"
     system "make", "install"
   end
-
-  test do
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <cpporm.h>
-      int main() {
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-lcpporm", "-o", "test"
-    system "./test"
-  end
 end

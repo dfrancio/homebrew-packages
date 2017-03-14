@@ -11,15 +11,4 @@ class Breakpad < Formula
     system "make"
     system "make", "install"
   end
-
-  test do
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <Breakpad/Breakpad.h>
-      int main() {
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-lbreakpad", "-o", "test"
-    system "./test"
-  end
 end

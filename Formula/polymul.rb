@@ -18,20 +18,4 @@ class Polymul < Formula
     system "make"
     system "make", "install"
   end
-
-  test do
-    system "make", "check"
-
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <cassert>
-      #include <polymul.h>
-      int main() {
-        polymul::polynomial<double, 2, 2> p1, p;
-        assert(p.size == 4);
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-lpolymul", "-o", "test"
-    system "./test"
-  end
 end

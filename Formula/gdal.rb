@@ -58,10 +58,4 @@ class Gdal < Formula
     system "make"
     system "make", "install"
   end
-
-  test do
-    # basic tests to see if third-party dylibs are loading OK
-    system "#{bin}/gdalinfo", "--formats"
-    system "#{bin}/ogrinfo", "--formats"
-  end
 end

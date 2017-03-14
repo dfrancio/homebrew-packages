@@ -21,19 +21,6 @@ class Antlr4RuntimeCpp < Formula
     system "make"
     system "make", "install"
   end
-
-  test do
-    system "make", "check"
-
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <antlr4-runtime.h>
-      int main() {
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-lantlr4-runtime", "-o", "test"
-    system "./test"
-  end
 end
 
 __END__

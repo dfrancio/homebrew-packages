@@ -59,15 +59,4 @@ class Soci < Formula
 
     mv "#{lib}/cmake/soci/SOCI.cmake", "#{lib}/cmake/soci/SOCIConfig.cmake"
   end
-
-  test do
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <soci.h>
-      int main() {
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-lsoci", "-o", "test"
-    system "./test"
-  end
 end
