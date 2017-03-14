@@ -38,12 +38,15 @@ class Gdal < Formula
        "stream->bufbase_ = JAS_CAST(uchar *, buf);",
        "stream->bufbase_ = JAS_CAST(u_char *, buf);"
 
-    system "./configure", "--prefix=#{HOMEBREW_PREFIX}",
+    system "./configure", "--prefix=#{prefix}",
                           "--disable-dependency-tracking",
+                          "--with-local=#{HOMEBREW_PREFIX}",
                           "--with-armadillo=yes",
                           "--with-liblzma=yes",
                           "--with-sqlite3=yes",
                           "--with-spatialite=yes",
+                          "--with-xerces=#{HOMEBREW_PREFIX}",
+                          "--with-libkml=#{HOMEBREW_PREFIX}",
                           "--with-poppler=#{HOMEBREW_PREFIX}",
                           "--with-podofo=#{HOMEBREW_PREFIX}",
                           "--with-expat=/usr"
