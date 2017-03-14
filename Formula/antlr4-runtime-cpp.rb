@@ -5,15 +5,15 @@ class Antlr4RuntimeCpp < Formula
   sha256 "eba012cc10fd0908c30476ea4f519490f539270ab68945109d150c5b091d6c86"
   head "https://github.com/antlr/antlr4.git"
 
-  depends_on "cmake" => :build
-
-  patch :DATA
-
   bottle do
     cellar :any
     root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
     sha256 "92c76f45fd4cd46d53fe0f53281ef7e60c44d42c7faac2a3fbcc6b27abf83b96" => :sierra
   end
+
+  depends_on "cmake" => :build
+
+  patch :DATA
 
   def install
     cd "./runtime/Cpp"

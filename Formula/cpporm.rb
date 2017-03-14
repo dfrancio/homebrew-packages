@@ -5,13 +5,17 @@ class Cpporm < Formula
   sha256 "81fdcd06d2305879c080e44dcaf681bbdebcf31e0facb924a42c0f12c948eedd"
   head "https://github.com/dsogari/cpporm.git"
 
-  depends_on "cmake" => :build
-
   bottle do
     cellar :any
     root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
     sha256 "ac22f70a2af52a751b1645fe1d0a1a84d71518f3b17704d1e618a3e6cf4e8e74" => :sierra
   end
+
+  depends_on "cmake" => :build
+  depends_on "boost" => :run
+  depends_on "gflags" => :run
+  depends_on "soci" => :run
+  depends_on "antlr4-runtime-cpp" => :run
 
   def install
     args = %w[
