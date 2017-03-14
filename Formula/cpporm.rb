@@ -7,6 +7,12 @@ class Cpporm < Formula
 
   depends_on "cmake" => :build
 
+  bottle do
+    cellar :any
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "ac22f70a2af52a751b1645fe1d0a1a84d71518f3b17704d1e618a3e6cf4e8e74" => :sierra
+  end
+
   def install
     args = %w[
       -DBUILD_SHARED_LIBS=ON
