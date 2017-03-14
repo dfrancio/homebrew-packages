@@ -26,7 +26,7 @@ class Soci < Formula
     inreplace "./src/core/CMakeLists.txt", "DESTINATION cmake", "DESTINATION ${LIBDIR}/cmake/soci"
     inreplace "./cmake/SociBackend.cmake", "DESTINATION cmake", "DESTINATION ${LIBDIR}/cmake/soci"
 
-    args = %w[-DSOCI_TESTS=OFF]
+    args = std_cmake_args + %w[-DSOCI_TESTS=OFF]
 
     %w[boost sqlite postgresql odbc mysql].each do |a|
       bool = build.with?(a) ? "ON" : "OFF"
@@ -53,7 +53,7 @@ class Soci < Formula
       args << "-DMYSQL_LIBRARIES=/usr/local/lib/mariadb/libmysqlclient.dylib"
     end
 
-    system "cmake", ".", *std_cmake_args, *args
+    system "cmake", ".", *args
     system "make"
     system "make", "install"
 
