@@ -4,10 +4,13 @@ class Gdal < Formula
   url "https://github.com/dsogari/gdal/archive/v2.1.3.tar.gz"
   sha256 "0aa6348515874bd8f3f1f1288fc6115a190d09ad837033fd2b828bab97e32e92"
   head "https://github.com/dsogari/gdal.git"
+  
+  bottle do
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "e9c7d5ff4fd8dd6de9700c5cc36ff47514b03623d402722baaa901ecab2ba8e7" => :sierra
+  end
 
   depends_on :xcode => :build
-  depends_on "armadillo" => :run
-  depends_on "cfitsio" => :run
   depends_on "freexl" => :run
   depends_on "geos" => :run
   depends_on "giflib" => :run
@@ -19,7 +22,6 @@ class Gdal < Formula
   depends_on "libspatialite" => :run
   depends_on "libtiff" => :run
   depends_on "libxml2" => :run
-  depends_on "netcdf" => :run
   depends_on "openjpeg" => :run
   depends_on "pcre" => :run
   depends_on "podofo" => :run
@@ -30,6 +32,9 @@ class Gdal < Formula
   depends_on "webp" => :run
   depends_on "xerces-c" => :run
   depends_on "xz" => :run
+  depends_on "homebrew/science/armadillo" => :run
+  depends_on "homebrew/science/cfitsio" => :run
+  depends_on "homebrew/science/netcdf" => :run
   depends_on "dsogari/packages/libkml" => :run
 
   def install
@@ -55,13 +60,8 @@ class Gdal < Formula
   end
 
   test do
-    (testpath/"test.cpp").write <<-EOS.undent
-      #include <gdal.h>
-      int main() {
-        return 0;
-      }
-    EOS
-    system ENV.cc, "test.cpp", "-L#{lib}", "-lgdal", "-o", "test"
-    system "./test"
+    # basic tests to see if third-party dylibs are loading OK
+    system "#{bin}/gdalinfo", "--formats"
+    system "#{bin}/ogrinfo", "--formats"
   end
 end
