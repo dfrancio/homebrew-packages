@@ -1,6 +1,6 @@
 class Antlr4RuntimeCpp < Formula
   desc "ANother Tool for Language Recognition - C++ runtime"
-  homepage "https://github.com/dsogari/polymul"
+  homepage "http://www.antlr.org"
   url "https://github.com/antlr/antlr4/archive/4.6.tar.gz"
   sha256 "eba012cc10fd0908c30476ea4f519490f539270ab68945109d150c5b091d6c86"
   head "https://github.com/antlr/antlr4.git"
