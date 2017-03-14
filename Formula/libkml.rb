@@ -13,9 +13,13 @@ class Libkml < Formula
   depends_on "swig" => :build if build.with?("python")
 
   def install
-    inreplace "./src/swig/CMakeLists.txt", '${PYTHON_INSTALL_DIR}', "lib/python2.7/site-packages/libkml"
+    inreplace "./src/swig/CMakeLists.txt" do |s|
+      s.gsub! /\${PYTHON_INSTALL_DIR}/, "lib/python2.7/site-packages/libkml"
+      s.gsub! /(.*swig_add_module.*python.*)/, "\\1\n    SET_TARGET_PROPERTIES(${SWIG_MODULE_${MODULE_NAME}_REAL_NAME} PROPERTIES LINK_FLAGS \"-undefined dynamic_lookup\")"
+      s.gsub! /\${PYTHON_LIBRARIES}/, ""
+    end
 
-    args = std_cmake_args;
+    args = std_cmake_args
     if build.with? "python"
       args << "-DWITH_SWIG:BOOL=ON"
       args << "-DWITH_PYTHON:BOOL=ON"
