@@ -5,6 +5,12 @@ class Libkml < Formula
   sha256 "8892439e5570091965aaffe30b08631fdf7ca7f81f6495b4648f0950d7ea7963"
   head "https://github.com/libkml/libkml.git"
 
+  bottle do
+    cellar :any
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "1c2a9f82ef885e24af995a3e166525f42d2cabf00271f3938b31fa1834161b6d" => :sierra
+  end
+
   depends_on :python => :recommended
   depends_on "cmake" => :build
   depends_on "boost" => :run
