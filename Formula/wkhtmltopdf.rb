@@ -1,8 +1,9 @@
 class Wkhtmltopdf < Formula
   desc "Convert HTML to PDF using Webkit (QtWebKit)"
   homepage "http://wkhtmltopdf.org"
+  head "https://github.com/wkhtmltopdf/wkhtmltopdf.git"
 
-  head do
+  devel do
     url "https://github.com/wkhtmltopdf/wkhtmltopdf/archive/merge-0.13.tar.gz"
     sha256 "b278597c47b9f76b116825e4a4fb7bb2baba51e7578bdf55897525640c67610a"
   end
