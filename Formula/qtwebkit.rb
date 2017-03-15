@@ -31,4 +31,17 @@ class Qtwebkit < Formula
     system "make"
     system "make", "install"
   end
+
+  def postinstall
+    ohai "hello"
+    # qt5_modules = Formula["qt5"].opt_prefix/"mkspecs/modules"
+    # qt5_modules.install Dir["#{opt_prefix}/mkspecs/modules/*"]
+
+    # %w[webkit webkitwidgets].each do |a|
+    #   inreplace qt5_modules/"qt_lib_#{a}.pri" do |s|
+    #     s.gsub! /(.*module_config.*)/, "\\1lib_bundle"
+    #     s.gsub! /(.*rpath = (.*))/, "\\1\nQMAKE_RPATHDIR *= \\2"
+    #   end
+    # end
+  end
 end
