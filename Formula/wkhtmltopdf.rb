@@ -13,15 +13,14 @@ class Wkhtmltopdf < Formula
 
   def install
     ENV["WKHTMLTOX_VERSION"] = "0.13"
-    system "qmake", "-config", "release", "PREFIX=#{prefix}"
+    system Formula["qt5"].bin/"qmake", "-config", "release", "PREFIX=#{prefix}"
     system "make"
-    system "make", "install"
 
-    # %w[dllbegin.inc dllend.inc image.h pdf.h].each do |a|
-    #   (include/"wkhtmltox").install "include/wkhtmltox/#{a}"
-    # end
-    # bin.install Dir["bin/*"]
-    # lib.install Dir["lib/*"]
+    %w[dllbegin.inc dllend.inc image.h pdf.h].each do |a|
+      (include/"wkhtmltox").install "include/wkhtmltox/#{a}"
+    end
+    bin.install Dir["bin/wkhtml*"]
+    lib.install Dir["bin/*.dylib"]
   end
 end
 
