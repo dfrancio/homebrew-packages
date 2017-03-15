@@ -39,7 +39,7 @@ class Qtwebkit < Formula
     cp_r "#{opt_prefix}/mkspecs", qt5_prefix
 
     %w[webkit webkitwidgets].each do |a|
-      ohai "Parching qt_lib_#{a}.pri"
+      ohai "Patching qt_lib_#{a}.pri"
       inreplace qt5_modules/"qt_lib_#{a}.pri" do |s|
         s.gsub! /(.*module_config.*)/, "\\1lib_bundle"
         s.gsub! /(.*rpath = (.*))/, "\\1\nQMAKE_RPATHDIR *= \\2"
