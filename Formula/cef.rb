@@ -1,5 +1,5 @@
 class Cef < Formula
-  desc "Chromium Embedded Framework (QtWebKit)"
+  desc "Chromium Embedded Framework"
   homepage "https://bitbucket.org/chromiumembedded/cef"
   url "http://opensource.spotify.com/cefbuilds/cef_binary_3.2924.1575.g97389a9_macosx64.tar.bz2"
   version "3.2924.1575.g97389a9"
@@ -11,9 +11,9 @@ class Cef < Formula
     sha256 "30424a98ef8c85f7a9e36e639921b74f2cbb0b29a031ff261f13d94a5ebde41c" => :sierra
   end
 
-  depends_on "cmake" => :build
-
   keg_only "Intended for development of CEF-based applications. Do not 'brew link' this software!"
+
+  depends_on "cmake" => :build
 
   def install
     prefix.install Dir["*"]
