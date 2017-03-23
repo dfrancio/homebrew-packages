@@ -5,6 +5,10 @@ class CefPdf < Formula
   sha256 "c56c6fab59586837cab39e72731701b6a1b7256925eca52b77071c3c802597a0"
   head "https://github.com/dsogari/cef-pdf.git"
 
+  bottle do
+    sha256 "b7fe1e76daa0c0c0bb53b3d444a93e6cd36d511e77b4457355dcf8e0368e6969" => :sierra
+  end
+
   depends_on "cmake" => :build
   depends_on "dsogari/packages/cef" => :build
   depends_on "boost" => :run
