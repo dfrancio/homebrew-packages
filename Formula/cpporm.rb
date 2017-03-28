@@ -15,7 +15,7 @@ class Cpporm < Formula
   depends_on "boost" => :run
   depends_on "gflags" => :run
   depends_on "antlr4-runtime-cpp" => :run
-  depends_on "dsogari/packages/soci" => :run
+  depends_on "dsogari/packages/soci" => "with-sqlite"
 
   def install
     args = %w[
