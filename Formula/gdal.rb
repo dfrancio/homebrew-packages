@@ -4,7 +4,12 @@ class Gdal < Formula
   url "https://github.com/dsogari/gdal/archive/v2.1.4.tar.gz"
   sha256 "050af48e000eb8181a41d57ec5e11de2a4e774121408feb43b53a94b06c5b8ee"
   head "https://github.com/dsogari/gdal.git"
-  
+
+  bottle do
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "32450b159051bd13693b4552fdfc9d454e1bf97acd38cbeff740c40cb53c7744" => :sierra
+  end
+
   depends_on :xcode => :build
   depends_on "freexl" => :run
   depends_on "geos" => :run

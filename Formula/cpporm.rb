@@ -5,6 +5,12 @@ class Cpporm < Formula
   sha256 "b77c28902fcbffa37b31905db4a42625d7f68abfbde156bace2d6a2935b1fa4c"
   head "https://github.com/dsogari/cpporm.git"
 
+  bottle do
+    cellar :any
+    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
+    sha256 "ca211452ba10589a879665a10760c2a9a9e5556fc35ee4f90ce4105f90bc4af1" => :sierra
+  end
+
   depends_on "cmake" => :build
   depends_on "boost" => :run
   depends_on "gflags" => :run
