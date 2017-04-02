@@ -1,15 +1,10 @@
 class Gdal < Formula
   desc "Geospatial Data Abstraction Library"
   homepage "http://www.gdal.org"
-  url "https://github.com/dsogari/gdal/archive/v2.1.3.tar.gz"
-  sha256 "0aa6348515874bd8f3f1f1288fc6115a190d09ad837033fd2b828bab97e32e92"
+  url "https://github.com/dsogari/gdal/archive/v2.1.4.tar.gz"
+  sha256 "050af48e000eb8181a41d57ec5e11de2a4e774121408feb43b53a94b06c5b8ee"
   head "https://github.com/dsogari/gdal.git"
   
-  bottle do
-    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
-    sha256 "e9c7d5ff4fd8dd6de9700c5cc36ff47514b03623d402722baaa901ecab2ba8e7" => :sierra
-  end
-
   depends_on :xcode => :build
   depends_on "freexl" => :run
   depends_on "geos" => :run
@@ -39,9 +34,7 @@ class Gdal < Formula
 
   def install
     cd "gdal"
-    inreplace "frmts/jpeg2000/jpeg2000_vsil_io.cpp",
-       "stream->bufbase_ = JAS_CAST(uchar *, buf);",
-       "stream->bufbase_ = JAS_CAST(u_char *, buf);"
+    inreplace "frmts/jpeg2000/jpeg2000_vsil_io.cpp", "uchar", "u_char"
 
     system "./configure", "--prefix=#{prefix}",
                           "--disable-dependency-tracking",

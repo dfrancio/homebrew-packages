@@ -1,15 +1,9 @@
 class Cpporm < Formula
   desc "Simple ORM library with SQL parser"
   homepage "https://github.com/dsogari/cpporm"
-  url "https://github.com/dsogari/cpporm/archive/v0.2.19.tar.gz"
-  sha256 "7d019b77d4155c8ba7149009a93549b9c8b2245a168a2272988c57c3ff850a5c"
+  url "https://github.com/dsogari/cpporm/archive/v0.2.20.tar.gz"
+  sha256 "b77c28902fcbffa37b31905db4a42625d7f68abfbde156bace2d6a2935b1fa4c"
   head "https://github.com/dsogari/cpporm.git"
-
-  bottle do
-    cellar :any
-    root_url "https://github.com/dsogari/homebrew-packages/raw/master/Bottle"
-    sha256 "aa6398225e4e34e16edd96df2250c001f45af7ef0b14eb5f4fa4b717ff26ab6a" => :sierra
-  end
 
   depends_on "cmake" => :build
   depends_on "boost" => :run
